@@ -1,0 +1,36 @@
+{
+    "terminal.integrated.profiles.windows": {
+        "CMDER": {
+            "path":"${env:windir}\\System32\\cmd.exe",
+            "args": ["/K", "C:\\PT-ecofact-azuluna\\cmder\\vendor\\bin\\vscode_init.cmd"],
+        },
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        },
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "args": [],
+            "icon": "terminal-cmd"
+        },
+        "Git Bash": {
+            "source": "Git Bash"
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "CMDER",
+    "workbench.preferredDarkColorTheme": "Visual Studio Dark",
+    "editor.minimap.enabled": false,
+    "emmet.triggerExpansionOnTab": true,
+    "[css]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "editor.suggest.preview": true,
+    "livePreview.showServerStatusNotifications": true,
+    "workbench.editorAssociations": {
+        "*.html": "default"
+    },
+    "workbench.editor.splitInGroupLayout": "vertical"
+}

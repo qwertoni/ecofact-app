@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Listado de Compras</title>
+    <link rel="stylesheet" href="{% static 'base/css/recibo.css' %}">
+    <style type="text/css">
+        @page {
+             width: 58mm; 
+            size: auto;   
+            margin: 2mm;
+            }
+    </style>
+</head>
+<body onload="window.print();" class="receipt">
+    <div class="row">
+        <center>
+            <br><br><br><br><br><br><br><br>
+            <b class="text-center">Hosteria Azuluna-Ecolodge</b><br> 
+            {% comment %} <small>Direccion</small><br> {% endcomment %}
+            {% comment %} <small>FACTURA No. {{enc.factura}}</small><br> {% endcomment %}
+        </center>
+        <small>
+            <br>
+            <b>Factura No.:</b>&nbsp;&nbsp;{{enc.id}}&nbsp;&nbsp;<br>
+            <b>Fecha Fact:</b>&nbsp;&nbsp;{{enc.fecha}}&nbsp;&nbsp; <br>
+            <b>Cliente:</b>&nbsp;&nbsp;{{enc.cliente}}<br>
+            <b>Ruc:</b>&nbsp;&nbsp;{{enc.rucCi}}<br>
+            <b>Telefono:</b>&nbsp;&nbsp;{{enc.celular}}<br>
+            <b>Direccion:</b>&nbsp;&nbsp;{{enc.direccion}}<br>
+            <br><br>
+        </small>
+        <hr size="1px" color="black" />
+        <table class="table table-bordered border-primary" width="100%">
+            <thead>
+                
+                <th>Cant.</th>
+                <th>Detalle</th>
+                <th>P. Unit.</th>
+                <th>V.Total</th>
+                
+            </thead>
+            
+            <tbody>
+                {% for obj in detalle %}
+                <tr>
+                    
+                    <td align='center'>{{obj.cantidad}}</td>
+                    <td align='center'>{{obj.producto}}</td>
+                    <td align='center'>{{obj.precio}}</td>
+                    <td align='center'>{{obj.sub_total}}</td>
+                                        
+                </tr>
+                
+                {% endfor %}
+            </tbody>
+        </table>
+        <hr size="1px" color="black" />
+        <div class="col-xs-1"></div>
+        <div class="col-xs-11">
+            <div class="pull-right">
+            <table class="table-responsive dt-responsive nowrap" align='right'>
+                <thead>
+                    <th colspan=2>Totales</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sub Total:</td> <td align='right'>{{enc.total}}</td>
+                    </tr>
+                    <tr>
+                        <td>Iva 12%:</td> <td align='right'>{{enc.descuento}}</td>
+                    </tr>
+                    <tr>
+                        <td>Servicios 10%:</td> <td align='right'><b>{{enc.total}}</b></td>
+                    </tr>
+                    <tr>
+                        <td>Total----></td> <td align='right'><b>{{enc.total}}</b></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        <div class="row">
+        <small class="pie">
+            <br><br>
+            
+        </small>
+        </div>
+    </div>
+</body>
+</html>
