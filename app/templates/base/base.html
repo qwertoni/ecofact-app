@@ -107,13 +107,13 @@
             <a class="collapse-item" href="{% url 'inv:producto_list' %}">Producto</a>
             {% endif %}
             
-            <h6 class="collapse-header">Catálogos de Compras:</h6>
+            <h6 class="collapse-header">Catálogos de Provedores:</h6>
             
             {% if perms.cmp.view_proveedor %}
             <a class="collapse-item" href="{% url 'cmp:proveedor_list' %}">Proveedores</a>
             {% endif %}
 
-            <h6 class="collapse-header">Catálogos de Facturación:</h6>
+            <h6 class="collapse-header">Catálogos de Clientes:</h6>
             
             {% if perms.fac.view_cliente %}
             <a class="collapse-item" href="{% url 'fac:cliente_list' %}">Clientes</a>
@@ -131,7 +131,7 @@
         <div id="collapseCompras" class="collapse {% if cmp_url in request.path  %} show {% endif %}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Entradas</h6>
-            <a class="collapse-item {% if cmp_url in request.path  %} active {% endif %}" href="{% url 'cmp:compras_list' %}">Compras</a>
+            <a class="collapse-item {% if cmp_url in request.path  %} active {% endif %}" href="{% url 'cmp:compras_list' %}">Existencia</a>
 
             <h6 class="collapse-header">Salidas</h6>
             <a class="collapse-item" href="{% url 'fac:factura_list' %}">Facturas</a>
