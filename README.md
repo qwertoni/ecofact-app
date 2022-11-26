@@ -45,3 +45,11 @@ Inspector de elementos Google Chrome
 Instrucciones de intalacion:
 Link: https://drive.google.com/drive/folders/1gWkO5qnnzJbDBczCcCarIyn8GG5cn5XR?usp=sharing
 
+orden de ejecucion al programar
+models.py
+views.py
+url.py
+list
+form
+añadir html
+formpy
