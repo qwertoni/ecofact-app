@@ -5,6 +5,14 @@
     <!-- Card Header - Dropdown -->
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
       <h6 class="m-0 font-weight-bold text-primary">Listado de Categorías</h6>
+      
+      
+    <div>
+      {% comment %} <a onclick="return abrir_modal('/fac/clientes/new')" class="btn btn-success" ><i ></i><=</a> {% endcomment %}
+      <a href="{% url 'inv:subcategoria_list' %}" class="btn btn-success" ><i ></i>Sub Categoria=></a>
+    </div>
+
+
       <div class="dropdown no-arrow">
         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>

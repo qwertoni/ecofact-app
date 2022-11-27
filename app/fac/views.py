@@ -173,6 +173,11 @@ def facturas(request,id=None):
     
     if request.method == "POST":
         cliente = request.POST.get("enc_cliente")
+        
+        rucCi = request.POST.get("enc_rucCi")
+        celular = request.POST.get("enc_celular")
+        direccion = request.POST.get("enc.direccion")
+        
         fecha  = request.POST.get("fecha")
         cli=Cliente.objects.get(pk=cliente)
 
