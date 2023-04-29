@@ -35,6 +35,7 @@
                                                 <option value="0">Seleccione Cliente</option>
                                                 {% for item in clientes %}
                                                     <option value="{{item.id}}">{{ item.nombres }} {{item.apellidos}} </option>
+
                                                 {% endfor %}
                                             </select>
                                         </div>
@@ -320,6 +321,10 @@
 
         $("#enc_id").val("{{ enc.id }}");
         $("#enc_cliente").val("{{ enc.cliente.id }}");
+
+        $("#enc_rucCi").val("{{ enc.rucCi.id }}");
+       
+
         $("#fecha").val("{{ enc.fecha|date:'Y-m-d' }}");
         $("#sub_total").val("{{ enc.sub_total }}");
         $("#descuento").val("{{ enc.descuento }}");
@@ -415,6 +420,7 @@
         e.preventDefault();
 
         var idCliente = $("#enc_cliente").val();
+       
         var url;
         const qs = "?t=fc";
         // alert(idCliente)
@@ -446,6 +452,8 @@ $("#popup").on('hidden.bs.modal',function(){
             $("#enc_cliente").append('<option value="0">Seleccione Cliente</option>')
             for(var i=0;i<data.length;i++){
                 $("#enc_cliente").append(`<option value="${data[i].id}">${data[i].nombres} ${data[i].apellidos} </option>`)
+                $("#enc_rucCi").append(`<option value="${data[i].id}">${data[i].rucCi} </option>`)
+
             }
             $("#enc_cliente").val(a).change()
         },

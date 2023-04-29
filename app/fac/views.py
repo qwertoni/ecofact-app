@@ -152,6 +152,10 @@ def facturas(request,id=None):
                 'id':0,
                 'fecha':datetime.today(),
                 'cliente':0,
+                'rucCi':0,
+                'telefono':0,
+                'direccion':0,
+                'fecha':0,
                 'sub_total':0.00,
                 'descuento':0.00,
                 'total': 0.00
@@ -162,6 +166,9 @@ def facturas(request,id=None):
                 'id':enc.id,
                 'fecha':enc.fecha,
                 'cliente':enc.cliente,
+                'rucCi':enc.rucCi,
+                
+                'fecha':enc.fecha,
                 'sub_total':enc.sub_total,
                 'descuento':enc.descuento,
                 'total':enc.total
@@ -175,9 +182,7 @@ def facturas(request,id=None):
         cliente = request.POST.get("enc_cliente")
         
         rucCi = request.POST.get("enc_rucCi")
-        celular = request.POST.get("enc_celular")
-        direccion = request.POST.get("enc.direccion")
-        
+
         fecha  = request.POST.get("fecha")
         cli=Cliente.objects.get(pk=cliente)
 

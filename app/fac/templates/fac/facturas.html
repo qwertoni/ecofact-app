@@ -33,8 +33,15 @@
                                             <select name="enc_cliente" id="enc_cliente" class="form-control">
                                                 <option value="0">Seleccione Cliente</option>
                                                 {% for item in clientes %}
-                                                    <option value="{{item.id}}">{{ item.nombres }} {{item.apellidos}} </option>
+                                                    <option value="{{item.id}}" >{{ item.nombres }} {{item.apellidos}} </option>
+¨
+                                                   
                                                 {% endfor %}
+                                                
+                                            ¨
+                                                   
+                                                
+                                                
                                             </select>
                                         </div>
                                         <div class="col-lg-1 col-md-1">
@@ -49,6 +56,7 @@
                                     No. Factura:
                                     <input type="text" name="enc_id" id="enc_id" readonly class="form-control">
                                     </div>
+                                
                             </div>
 
                             <div class="col-lg-5 ">
@@ -293,6 +301,7 @@
         });
     }
 
+    var popupProducto = false;
     $(function () {
         $("#sidebarToggle").click();
         {% comment %} $('#enc_cliente').select2({
@@ -301,10 +310,12 @@
         }); error {% endcomment %}
 
         $("#btnBuscar").click(function(e){
+            e.preventDefault();
             if ($("#enc_cliente").val()==="0"){
                 mensaje("Cliente No Seleccionado",'red');
                 return false;
             }
+            popupProducto = true;
             abrir_modal("{% url 'fac:factura_producto' %}");
         });
 
@@ -323,9 +334,7 @@
         $("#enc_cliente").val("{{ enc.cliente.id }}").change();
         $("#fecha").val("{{ enc.fecha|date:'Y-m-d' }}");
         $("#enc_rucCi").val("{{ enc.rucCi.id }}").change();
-        $("#enc_celular").val("{{ enc.celular.id }}").change();
-        $("#enc_direccion").val("{{ enc.direccion.id }}").change();
-
+        
         $("#sub_total").val("{{ enc.sub_total }}");
         $("#descuento").val("{{ enc.descuento }}");
         $("#total").val({{ enc.total }});
@@ -415,8 +424,14 @@
 
     $("#btnEditCliente").click(function(e){
         e.preventDefault();
+        popupProducto = false;
 
         var idCliente = $("#enc_cliente").val();
+        
+        var select = document.getElementById("enc_cliente"  );
+        var opselec   = select.options[select.selectedIndex];
+      
+
         var url;
         const qs = "?t=fc";
         // alert(idCliente)
@@ -443,13 +458,15 @@ $("#popup").on('hidden.bs.modal',function(){
         type:"GET",
         url:url,
         success: function(data){
+            if(popupProducto){
+                return;  //Si fue la ventana de productos la que se cerró, que no haga nada
+            }
             console.log(data)
             $("#enc_cliente").find('option').remove()
             $("#enc_cliente").append('<option value="0">Seleccione Cliente</option>')
             for(var i=0;i<data.length;i++){
                 $("#enc_cliente").append(`<option value="${data[i].id}">${data[i].nombres} ${data[i].apellidos} </option>`)
 
-                $("#enc_rucCi").append(`<option value="${data[i].id}">${data[i].rucCi} </option>`)
 
             }
             $("#enc_cliente").val(a).change()

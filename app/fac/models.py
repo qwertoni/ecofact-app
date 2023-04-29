@@ -92,6 +92,9 @@ class Cliente(ClaseModelo):
     
 class FacturaEnc(ClaseModelo2):
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+
+    rucCi=models.FloatField(default=0)
+
     fecha = models.DateTimeField(auto_now_add=True)
     sub_total=models.FloatField(default=0)
     descuento=models.FloatField(default=0)
